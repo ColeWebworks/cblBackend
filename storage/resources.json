@@ -1,0 +1,57 @@
+{
+    "useful_links": [
+        {
+            "title": "Cornwall Adult Education",
+            "link": "https://compass.cornwall.gov.uk/PSWebEnrolment/webenrolment.aspx?page=~/webcontrols/search.ascx"
+        },
+        {
+            "title": "Apply Apprenticeship",
+            "link": "https://www.gov.uk/apply-apprenticeship"
+        },
+        {
+            "title": "Cornwall College",
+            "link": "https://www.cornwall.ac.uk/"
+        },
+        {
+            "title": "Kooth",
+            "link": "https://kooth.com/"
+        },
+        {
+            "title": "Outlook South West",
+            "link": "http://www.outlooksw.co.uk/"
+        }
+    ],
+    "partners": [{
+        "title": "Cornwall College",
+        "link": "https://www.cornwall.ac.uk/"
+    },
+    {
+        "title": "Real Ideas Organisation",
+        "link": "https://realideas.org/"
+    },
+    {
+        "title": "Cornwall Food",
+        "link": "http://www.cornwallfoodfoundation.org/"
+    },
+    {
+        "title": "Eden Project",
+        "link": "http://www.edenproject.com/"
+    },
+    {
+        "title": "Creative Kernow",
+        "link": "https://www.creativekernow.org.uk/"
+    },
+    {
+        "title": "Software Cornwall",
+        "link": "https://www.softwarecornwall.org/"
+    },
+    {
+        "title": "Pentreath",
+        "link": "https://pentreath.co.uk/"
+    },
+    {
+        "title": "Cornwall Marine",
+        "link": "http://www.cornwallmarine.net/"
+    }
+]
+}
