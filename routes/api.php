@@ -15,12 +15,11 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->group(function () {
 
-    Route::get('/user', function (Request $request) {
-        return $request->user();
-    });
+    Route::resource('/user', 'UserController');
 
     Route::resource('/admin', 'AdminController');
     Route::resource('/content', 'ContentController');
+    Route::resource('/event', 'EventsController');
 });
 
 Route::middleware('api')->post('/login', 'Auth\LoginController@authenticateApi');

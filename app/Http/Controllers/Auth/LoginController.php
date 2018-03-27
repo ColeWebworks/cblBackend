@@ -69,7 +69,7 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         return $this->authenticated($request, $this->guard()->user())
-            ?: response()->json(['token' => $this->guard()->user()->api_token]);
+            ?: response()->json(['token' => $this->guard()->user()->api_token, 'uid' => $this->guard()->user()->id]);
     }
 
     protected function sendFailedApiLoginResponse(Request $request)

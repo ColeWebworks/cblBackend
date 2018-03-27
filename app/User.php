@@ -34,4 +34,17 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo('App\Role');
     }
+
+    public function scopeOfRole($query, $role)
+    {
+        return $query->where('role_id', $role->id);
+    }
+
+    public function attendingAsStaff() {
+        return $this->belongsToMany('App\Event')->withTimestamps();
+    }
+
+    public function events() {
+        return $this->belongsToMany('App\Event')->withTimestamps();
+    }
 }

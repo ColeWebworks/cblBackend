@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Log;
+use App\Exceptions\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -51,6 +52,10 @@ class Handler extends ExceptionHandler
     {
         //return parent::render($request, $exception);
         Log::error(var_export([$exception->getFile(), $exception->getLine(), $exception->getMessage()], true));
-        return response()->json(['message' => $exception->getMessage(), 'code' => $exception->getCode()], 401);
+        $response = ['message' => $exception->getMessage(), 'code' => $exception->getCode()];
+        if(get_class($exception) == 'App\Exceptions\ValidationException') {
+            $response['errors'] = $exception->getErrors();
+        }
+        return response()->json($response, 401);
     }
 }
