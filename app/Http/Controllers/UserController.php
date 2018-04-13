@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use App\Exceptions\ValidationException;
 
 class UserController extends Controller
@@ -124,6 +125,12 @@ class UserController extends Controller
         $events = $user->events;
 
         return response()->json(['events' => $events]);
+    }
+
+    public function roles() {
+        $roles = Role::all();
+
+        return response()->json(['roles' => $roles]);
     }
 
 }

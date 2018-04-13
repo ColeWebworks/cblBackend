@@ -15,10 +15,13 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->group(function () {
 
+    Route::get('/roles', 'UserController@roles');
     Route::resource('/user', 'UserController');
 
     Route::resource('/admin', 'AdminController');
     Route::resource('/content', 'ContentController');
+
+    Route::get('/event/categories', 'EventsController@categories');
     Route::resource('/event', 'EventsController');
 });
 

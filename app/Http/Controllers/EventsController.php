@@ -6,6 +6,7 @@ use App\Category;
 use App\Event;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Validator;
 
 class EventsController extends Controller
@@ -22,7 +23,8 @@ class EventsController extends Controller
         $data = [];
         $i = 0;
         foreach($cats as $c) {
-            $data[$i]['name'] = $c->name;
+            $data[$i]['id']     = $c->id;
+            $data[$i]['name']   = $c->name;
             $data[$i]['events'] = $c->events;
             $i++;
         }
@@ -49,6 +51,8 @@ class EventsController extends Controller
     {
         $cats = Category::active()->orderBy('order', 'asc')->get();
 
+        Log::debug(print_r($request->all(), true));
+
         $hasCats = false;
         $hasUsers = false;
 
@@ -71,13 +75,16 @@ class EventsController extends Controller
             $hasUsers = true;
         }
 
-        $event = new Event();
-        $event->name = $request->name;
+        $event          = new Event();
+        $event->name    = $request->name;
         $event->user_id = $request->user()->id;
         $event->details = $request->details;
-        $event->start = $request->start;
-        $event->status = 1;
+        $event->start   = $request->start;
+        $event->end     = $request->end;
+        $event->status  = 1;
         $event->save();
+
+        Log::debug(print_r($event, true));
 
         if($hasCats) {
             // build an array
@@ -163,5 +170,10 @@ class EventsController extends Controller
         $event->users()->detach($user->id, ['role_id', $role->id]);
 
         return response()->json(['success' => true]);
+    }
+
+    public function categories(Request $request) {
+        $cats = Category::active()->orderBy('order', 'asc')->get();
+        return response()->json(['categories' => $cats]);
     }
 }
