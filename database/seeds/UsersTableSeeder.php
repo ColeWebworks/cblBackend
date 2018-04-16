@@ -11,12 +11,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+//        DB::table('users')->insert([
+//            'name' => 'Kevin Bowler',
+//            'email' => 'kevin@kpbowler.co.uk',
+//            'password' => bcrypt('secret'),
+//            'api_token' => str_random(60),
+//            'role_id' => 1,
+//        ]);
         DB::table('users')->insert([
-            'name' => 'Kevin Bowler',
-            'email' => 'kevin@kpbowler.co.uk',
+            'name' => 'Ben Cole',
+            'email' => 'bencole0002@hotmail.co.uk',
             'password' => bcrypt('secret'),
             'api_token' => str_random(60),
-            'role_id' => 1,
+            'role_id' => 4,
         ]);
     }
 }
