@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Validator;
+use Carbon\Carbon;
 
 class EventsController extends Controller
 {
@@ -75,12 +76,15 @@ class EventsController extends Controller
             $hasUsers = true;
         }
 
+        $start = Carbon::create($request->start['year'], $request->start['month'], $request->start['day'], $request->start['hour'], $request->start['minute'], 0);
+        $end = Carbon::create($request->end['year'], $request->end['month'], $request->end['day'], $request->end['hour'], $request->end['minute'], 0);
+
         $event          = new Event();
         $event->name    = $request->name;
         $event->user_id = $request->user()->id;
         $event->details = $request->details;
-        $event->start   = $request->start;
-        $event->end     = $request->end;
+        $event->start   = $start->toDateTimeString();
+        $event->end     = $end->toDateTimeString();
         $event->status  = 1;
         $event->save();
 
