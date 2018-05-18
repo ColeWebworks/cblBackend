@@ -56,6 +56,6 @@ class Handler extends ExceptionHandler
         if(get_class($exception) == 'App\Exceptions\ValidationException') {
             $response['errors'] = $exception->getErrors();
         }
-        return response()->json($response, 401);
+        return response()->json($response, 400);
     }
 }
